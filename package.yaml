@@ -24,6 +24,10 @@ ghc-options:
 - -isrc
 - -Widentities
 dependencies:
+- ilist
+- split
+- safe
+- hspec
 - transformers
 - parsec
 - base >= 4.7 && < 5

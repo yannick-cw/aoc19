@@ -1,10 +1,6 @@
 module InReader where
 
 import           Text.ParserCombinators.Parsec
-import           System.IO                      ( withFile
-                                                , IOMode(ReadMode)
-                                                , hGetContents
-                                                )
 
 lineParser :: GenParser Char st [String]
 lineParser = endBy line eol
@@ -12,12 +8,12 @@ lineParser = endBy line eol
   line = many (noneOf ",\n")
   eol  = char '\n'
 
-parseIt :: String -> Either ParseError [String]
-parseIt = parse lineParser "fuel_file"
+commaParser :: GenParser Char st [String]
+commaParser = sepBy (many (noneOf ",")) (char ',')
 
-run :: Show a => ([Int] -> a) -> IO ()
-run fn = withFile "data/day1.txt" ReadMode $ \handle -> do
-  file <- hGetContents handle
-  case parseIt file of
-    Right ll  -> print $ fn $ read <$> ll
-    Left  err -> fail $ show err
+parseDay1 :: String -> Either ParseError [String]
+parseDay1 = parse lineParser "unknown"
+
+parseDay2 :: String -> Either ParseError [String]
+parseDay2 = parse commaParser "unknown"
+
