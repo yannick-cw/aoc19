@@ -3,7 +3,10 @@
 module Two where
 
 import           Data.List.Index                ( setAt )
-import           Safe                           ( atMay )
+import           Data.List                      ( find )
+import           Safe                           ( atMay
+                                                , headMay
+                                                )
 
 data Opcode = Add Int Int Int | Mult Int Int Int | Stop deriving (Eq)
 
@@ -33,3 +36,15 @@ computeOpcode intcodes pos =
 
 liftMay :: Maybe a -> Either String a
 liftMay = maybe (Left "Error, did not find Element in intcodes") Right
+
+findInput :: [Int] -> Maybe (Bool, Int, Int)
+findInput input = find
+  (\(f, _, _) -> f)
+  (do
+    noun <- [0 .. 99]
+    verb <- [0 .. 99]
+    let thisRes = (liftMay . headMay)
+          =<< computeOpcode ((setAt 1 noun . setAt 2 verb) input) 0
+    return (either (const False) (== 19690720) thisRes, noun, verb)
+  )
+

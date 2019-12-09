@@ -12,7 +12,7 @@ import           System.IO                      ( withFile
                                                 )
 
 someFunc :: IO ()
-someFunc = sequence_ [runDay1 requiredFuel, runDay2 compute]
+someFunc = sequence_ [runDay1 requiredFuel, runDay2 compute, runDay2 findInput]
 
 runDay1 :: Show a => ([Int] -> a) -> IO ()
 runDay1 fn = withFile "data/day1.txt" ReadMode $ \handle -> do
