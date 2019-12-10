@@ -6,17 +6,17 @@ import           Three
 spec :: Spec
 spec = describe "day 3" $ do
   it "small example"
-    $ intersections [["R8", "U5", "L5", "D3"], ["U7", "R6", "D4", "L4"]]
+    $ nearestIntersection [["R8", "U5", "L5", "D3"], ["U7", "R6", "D4", "L4"]]
     `shouldBe` Right [6, 11]
   it "example2"
-    $          (head <$> intersections
+    $          (head <$> nearestIntersection
                  [ ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"]
                  , ["U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83"]
                  ]
                )
     `shouldBe` Right 159
   it "example3"
-    $          (head <$> intersections
+    $          (head <$> nearestIntersection
                  [ [ "R98"
                    , "U47"
                    , "R26"
@@ -33,3 +33,10 @@ spec = describe "day 3" $ do
                  ]
                )
     `shouldBe` Right 135
+  it "nearest by path"
+    $          (head <$> nearestStepsIntersection
+                 [ ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"]
+                 , ["U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83"]
+                 ]
+               )
+    `shouldBe` Right (Coord 158 (-12) 610)

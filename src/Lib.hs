@@ -17,7 +17,8 @@ someFunc = sequence_
   [ runDay1 requiredFuel
   , runDay2 compute
   , runDay2 findInput
-  , runDay3 intersections
+  , runDay3 nearestIntersection
+  , runDay3 nearestStepsIntersection
   ]
 
 runDay1 :: Show a => ([Int] -> a) -> IO ()
