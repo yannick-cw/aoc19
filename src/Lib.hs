@@ -6,6 +6,7 @@ where
 import           One
 import           Two
 import           Three
+import           Four
 import           InReader
 import           System.IO                      ( withFile
                                                 , IOMode(ReadMode)
@@ -19,6 +20,7 @@ someFunc = sequence_
   , runDay2 findInput
   , runDay3 nearestIntersection
   , runDay3 nearestStepsIntersection
+  , print $ length allMatchingNums
   ]
 
 runDay1 :: Show a => ([Int] -> a) -> IO ()
