@@ -24,6 +24,7 @@ ghc-options:
 - -isrc
 - -Widentities
 dependencies:
+- vector
 - ilist
 - split
 - safe
