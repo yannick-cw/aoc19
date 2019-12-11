@@ -21,6 +21,7 @@ someFunc = sequence_
   , runDay3 nearestIntersection
   , runDay3 nearestStepsIntersection
   , print $ length allMatchingNums
+  , print $ length allMatchingNums2
   ]
 
 runDay1 :: Show a => ([Int] -> a) -> IO ()
